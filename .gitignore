@@ -1,3 +1,6 @@
+#Additions
+.vs/
+
 # Prerequisites
 *.d
 
@@ -76,3 +79,4 @@ Testing/
 .vs/DiscreteMathLibrary.slnx/v18/ipch/AutoPCH/40c8044bbbcced81/DISCRETEMATHS.ipch
 .vs/DiscreteMathLibrary.slnx/FileContentIndex/9569cd4b-8231-49cd-84a0-4f8927b1cbea.vsidx
 .vs/DiscreteMathLibrary.slnx/FileContentIndex/a2945af0-c405-4715-99ed-385d916966b6.vsidx
+.vs/DiscreteMathLibrary.slnx/FileContentIndex/f9455d95-dd1b-4795-a3d5-fb64a42878ba.vsidx
