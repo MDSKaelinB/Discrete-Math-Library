@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DiscreteMathLibrary.cpp">
+    <ClCompile Include="discretemaths.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
