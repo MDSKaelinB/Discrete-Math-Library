@@ -1,4 +1,8 @@
 #include "discretemaths.h"
+
+// \brief Gets the absolute value of a number by making it positive.
+// \param _kfX - The input float to check.
+// \return The positive version of the number.
 float Magnitude(const float _kfX)
 {
 	if (_kfX < 0.0f) //if negative
@@ -9,6 +13,9 @@ float Magnitude(const float _kfX)
 	return _kfX;
 }
 
+// \brief Checks if a number is negative, positive, or zero.
+// \param _kfX - The input float to check.
+// \return -1.0f for negative, 1.0f for positive, 0.0f for zero.
 float Signum(const float _kfX)
 {
 	if (_kfX < 0.0f) //if negative
@@ -21,4 +28,22 @@ float Signum(const float _kfX)
 	}
 	//number must be 0
 	return 0.0f;
+}
+
+// \brief Rounds a number down to the nearest whole integer.
+// \param _kfX - The input float to round down.
+// \return The rounded down whole number.
+float Floor(const float _kfX)
+{
+	//remove the decimal
+	int iTruncated = (int)_kfX;
+
+	//if its negative and had a decimal part
+	if (_kfX < 0.0f && _kfX !=(float)iTruncated)
+	{
+		//minus 1 to account for negative rounding
+		return(float)(iTruncated - 1);
+	}
+	//positive and whole numbers dont need changing
+	return (float)iTruncated;
 }
