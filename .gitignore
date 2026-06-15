@@ -67,3 +67,9 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+.vs/DiscreteMathLibrary.slnx/v18/Browse.VC.opendb
+.vs/DiscreteMathLibrary.slnx/FileContentIndex/93b4a5cc-513b-42f9-b57d-edec2581bb2d.vsidx
+.vs/DiscreteMathLibrary.slnx/v18/ipch/AutoPCH/ebaca48834063a8f/DISCRETEMATHLIBRARY.ipch
+.vs/DiscreteMathLibrary.slnx/v18/Browse.VC.db
+.vs/DiscreteMathLibrary.slnx/v18/Browse.VC.db-shm
+.vs/DiscreteMathLibrary.slnx/v18/Browse.VC.db-wal
