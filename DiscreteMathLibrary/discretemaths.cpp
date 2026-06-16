@@ -160,3 +160,40 @@ TSet Intersection(TSet& _rSetA, TSet& _rSetB)
 	}
 	return resultSet;
 }
+// \brief Combines all unique elements from both Set A and Set B
+// \param _rSetA - A reference to the first input set
+// \param _rSetB - A reference to the second input set
+// \return A new TSet containing the combined elements
+TSet Union(TSet& _rSetA, TSet& _rSetB)
+{
+	TSet resultSet; //empty set for combined elements
+	for (int i = 0; i <= SET_SIZE_MAX; i++)
+	{
+		//if element is present in set A or B
+		if (_rSetA.ContainsElement(i)||_rSetB.ContainsElement(i)) 
+		{
+			//Add it to result set
+			resultSet.AddElement(i);
+		}
+	}
+	return resultSet;
+}
+// \brief Finds all elements that exist in Set A but do not exist in Set B
+// \param _rSetA - A reference to the base set (A)
+// \param _rSetB - A reference to the set being subtracted (B)
+// \return A new TSet containing the difference
+TSet Difference(TSet& _rSetA, TSet& _rSetB)
+{
+	TSet resultSet; //creates an empty set to store elements of set A
+	//loop through set range 1 to 100
+	for (int i = 1; i <= SET_SIZE_MAX; i++)
+	{
+		//if element is in Set A and not in set B
+		if (_rSetA.ContainsElement(i) && !_rSetB.ContainsElement(i))
+		{
+			//add it to result set
+			resultSet.AddElement(i);
+		}
+	}
+	return resultSet;
+}
