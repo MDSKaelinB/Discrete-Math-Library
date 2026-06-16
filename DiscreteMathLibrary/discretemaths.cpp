@@ -197,3 +197,23 @@ TSet Difference(TSet& _rSetA, TSet& _rSetB)
 	}
 	return resultSet;
 }
+// \brief Finds all elements in the universal set that do not exist in Set X
+// \param _rSetX - A reference to the input set
+// \return A new TSet containing the complement
+TSet Complement(TSet& _rSetX)
+{
+	//Create an empty set to store remaining elemnts
+	TSet resultSet;
+
+	//loop through set range
+	for (int i = 0; i <= SET_SIZE_MAX; i++)
+	{
+		//if element isnt in set x
+		if (!_rSetX.ContainsElement(i))
+		{
+			//add it to our result set
+			resultSet.AddElement(i);
+		}
+	}
+	return resultSet;
+}
