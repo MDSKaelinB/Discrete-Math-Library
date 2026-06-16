@@ -142,6 +142,7 @@ unsigned long long Power(TSet& _rSet)
 
 	return ullSubsetsCount;
 }
+
 // \brief Calculates the total number of ordered pairs in the Cartesian product of two sets
 // \param _rA - A reference to the first input set
 // \param _rB - A reference to the second input set
@@ -151,6 +152,7 @@ unsigned long long CartesianProduct(TSet& _rA, TSet& _rB)
 	//multiply number of elements in Set A by the number of elements in Set B
 	return (unsigned long long) Cardinality(_rA) * Cardinality(_rB);
 }
+
 // \brief Checks if two sets contain the exact same elements
 // \param _rA - Reference to the first input set
 // \param _rB - A reference to the second input set
@@ -168,6 +170,7 @@ bool Equals(TSet& _rA, TSet& _rB)
 	}
 	return true; //sets are identical
 }
+
 // \brief Checks if Set A is a subset of B
 // \param _rA - A reference to the potential subset
 // \param _rB - reference to the main container set
@@ -186,7 +189,11 @@ bool Subset(TSet& _rA, TSet& _rB)
 	return true; //everything in a is in b too
 }
 
-bool SuperSet(TSet& _rA, TSet& _rB)
+// \brief Checks if Set A is a superset of Set B (A must contain everything that is in B)
+// \param _rA - A reference to the potential superset
+// \param _rB - A reference to the smaller inner set
+// \return True if A is a superset of B, false otherwise
+bool Superset(TSet& _rA, TSet& _rB)
 {
 	//loop through set range
 	for (int i = 1; i <= SET_SIZE_MAX; i++)
@@ -199,6 +206,25 @@ bool SuperSet(TSet& _rA, TSet& _rB)
 	}
 	return true; //a has everything that b has
 }
+
+// \brief Checks if two sets have zero elements in common
+// \param _rA - A reference to the first input set
+// \param _rB - A reference to the second input set
+// \return True if the sets have no overlap (disjoint), otherwise false
+bool Disjoint(TSet& _rA, TSet& _rB)
+{
+	//loop through set range
+	for (int i = 1; i <= SET_SIZE_MAX; i++)
+	{
+		//if element is in both sets there is an overlap therefore disjoint
+		if (_rA.ContainsElement(i) && _rB.ContainsElement(i))
+		{
+			return false;
+		}
+	}
+	return true; //no overlapping elements found
+}
+
 // \brief Finds all elements that exist in both Set A and Set B
 // \param _rSetA - A referenec to the fisrt input set
 // \param _rSetB - A reference to the second input set
@@ -249,6 +275,25 @@ TSet& SetDifference(TSet& _rSetA, TSet& _rSetB, TSet& _rResultant)
 		if (_rSetA.ContainsElement(i) && !_rSetB.ContainsElement(i))
 		{
 			//add it to result set
+			_rResultant.AddElement(i);
+		}
+	}
+	return _rResultant;
+}
+// \brief Finds all elements that exist in either Set A or Set B, but not both
+// \param _rA - A reference to the first input set
+// \param _rB - A reference to the second input set
+// \param _rResultant - The set where the results will be stored
+// \return A reference to the modified _rResultant set
+TSet& SymmetricDifference(TSet& _rA, TSet& _rB, TSet& _rResultant)
+{
+	_rResultant.SetClear(); //creates an empty set to store elements of set A
+	//loop through set range 1 to 100
+	for (int i = 1; i <= SET_SIZE_MAX; i++)
+	{
+		//if element is is A XOR B
+		if (_rA.ContainsElement(i) != _rB.ContainsElement(i))
+		{
 			_rResultant.AddElement(i);
 		}
 	}
