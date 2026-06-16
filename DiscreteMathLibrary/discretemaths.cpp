@@ -1,8 +1,8 @@
 #include "discretemaths.h"
 
-// \brief Gets the absolute value of a number by making it positive.
-// \param _kfX - The input float to check.
-// \return The positive version of the number.
+// \brief Gets the absolute value of a number by making it positive
+// \param _kfX - The input float to check
+// \return The positive version of the number
 float Magnitude(const float _kfX)
 {
 	if (_kfX < 0.0f) //if negative
@@ -13,9 +13,9 @@ float Magnitude(const float _kfX)
 	return _kfX;
 }
 
-// \brief Checks if a number is negative, positive, or zero.
-// \param _kfX - The input float to check.
-// \return -1.0f for negative, 1.0f for positive, 0.0f for zero.
+// \brief Checks if a number is negative positive or zero
+// \param _kfX - The input float to check
+// \return -1.0f for negative, 1.0f for positive, 0.0f for zero
 float Signum(const float _kfX)
 {
 	if (_kfX < 0.0f) //if negative
@@ -30,9 +30,9 @@ float Signum(const float _kfX)
 	return 0.0f;
 }
 
-// \brief Rounds a number down to the nearest whole integer.
-// \param _kfX - The input float to round down.
-// \return The rounded down whole number.
+// \brief Rounds a number down to the nearest whole integer
+// \param _kfX - The input float to round down
+// \return The rounded down whole number
 float Floor(const float _kfX)
 {
 	//remove the decimal
@@ -48,9 +48,9 @@ float Floor(const float _kfX)
 	return (float)iTruncated;
 }
 
-// \brief Rounds a number up to the nearest whole integer.
-// \param _kfX - The input float to round up.
-// \return The rounded up whole number.
+// \brief Rounds a number up to the nearest whole integer
+// \param _kfX - The input float to round up
+// \return The rounded up whole number
 float Ceiling(const float _kfX)
 {
 	int iTruncated = (int)_kfX;
@@ -61,4 +61,17 @@ float Ceiling(const float _kfX)
 	}
 	//megative numbers and whole numbers dont need changing
 	return (float)iTruncated;
+}
+
+// \brief Calculates factorial of a given unsigned integer
+// \param _kdn - The input number used to calculate the factorial
+// \return The final calculated factorial value
+unsigned long long Factorial(const unsigned int _kdn)
+{
+	unsigned long long ullResult = 1; //set result tracker to 1
+	for (unsigned int uiCount = 1; uiCount <= _kdn; uiCount++)
+	{
+		ullResult *= uiCount;
+	}
+	return ullResult;
 }
