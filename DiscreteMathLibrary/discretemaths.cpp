@@ -142,6 +142,32 @@ unsigned long long Power(TSet& _rSet)
 
 	return ullSubsetsCount;
 }
+// \brief Calculates the total number of ordered pairs in the Cartesian product of two sets
+// \param _rA - A reference to the first input set
+// \param _rB - A reference to the second input set
+// \return The total count of ordered pairs (Cardinality of A * Cardinality of B)
+unsigned long long CartesianProduct(TSet& _rA, TSet& _rB)
+{
+	//multiply number of elements in Set A by the number of elements in Set B
+	return (unsigned long long) Cardinality(_rA) * Cardinality(_rB);
+}
+// \brief Checks if two sets contain the exact same elements
+// \param _rA - Reference to the first input set
+// \param _rB - A reference to the second input set
+// \return True if the sets are identical otherwise false
+bool Equals(TSet& _rA, TSet& _rB)
+{
+	//loop through set range
+	for (int i = 1; i <= SET_SIZE_MAX; i++)
+	{
+		//if one set has an elemnt and the other doesnt they arent equal
+		if (_rA.ContainsElement(i) != _rB.ContainsElement(i))
+		{
+			return false;
+		}
+	}
+	return true; //sets are identical
+}
 // \brief Finds all elements that exist in both Set A and Set B
 // \param _rSetA - A referenec to the fisrt input set
 // \param _rSetB - A reference to the second input set
