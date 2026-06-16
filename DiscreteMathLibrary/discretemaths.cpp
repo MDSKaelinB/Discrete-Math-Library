@@ -130,3 +130,33 @@ int Cardinality(TSet& _rSet)
 	}
 	return iCount;
 }
+// \brief Calculates the total number of subsets in a sets power set
+// \param _rSet - Reference to the set being evaluated
+// \return The total count of subsets (2 to the power of cardinality)
+unsigned long long Power(TSet& _rSet)
+{
+	//Get the total number of elements in the set
+	int iElementsCount = Cardinality(_rSet);
+	//Calculate 2^n using bitwise left shift
+	unsigned long long ullSubsetsCount = 1ULL << iElementsCount; //1ULL is 1 Unsigned Long Long
+
+	return ullSubsetsCount;
+}
+// \brief Finds all elements that exist in both Set A and Set B
+// \param _rSetA - A referenec to the fisrt input set
+// \param _rSetB - A reference to the second input set
+// \return A new TSet containing the intersecting elements
+TSet Intersection(TSet& _rSetA, TSet& _rSetB)
+{
+	TSet resultSet; //creates an empty set to store the matches
+	//loop through universal set range
+	for (int i = 0; i < SET_SIZE_MAX; i++)
+	{
+		//if element is in both sets
+		if (_rSetA.ContainsElement(i) && _rSetB.ContainsElement(i))
+		{
+			resultSet.AddElement(i); //add to our result set
+		}
+	}
+	return resultSet;
+}
