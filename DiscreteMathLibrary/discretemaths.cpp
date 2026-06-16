@@ -75,3 +75,22 @@ unsigned long long Factorial(const unsigned int _kdn)
 	}
 	return ullResult;
 }
+
+// \brief Calculates the number of unique combinations (order doesnt matter)
+// \param _kuin - The total number of items in the set (n)
+// \param _kuir - The number of items to choose (r)
+// \return The total number of unique combinations
+unsigned long long Combination(const unsigned int _kuin, const unsigned int _kuir)
+{
+	//if trying to choose more items than exist, cant be mathematically possible
+	if (_kuir > _kuin) 
+	{
+		return 0;
+	}
+	//calculate n
+	unsigned long long ullNumerator = Factorial(_kuin);
+	//calculate r * (n-r)
+	unsigned long long ullDenomintor = Factorial(_kuir) * Factorial(_kuin - _kuir);
+	//divide them to get final answer
+	return ullNumerator / ullDenomintor;
+}
