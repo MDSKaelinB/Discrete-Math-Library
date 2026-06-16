@@ -146,45 +146,45 @@ unsigned long long Power(TSet& _rSet)
 // \param _rSetA - A referenec to the fisrt input set
 // \param _rSetB - A reference to the second input set
 // \return A new TSet containing the intersecting elements
-TSet Intersection(TSet& _rSetA, TSet& _rSetB)
+TSet& Intersection(TSet& _rSetA, TSet& _rSetB, TSet& _rResultant)
 {
-	TSet resultSet; //creates an empty set to store the matches
+	_rResultant.SetClear(); //creates an empty set to store the matches
 	//loop through universal set range
 	for (int i = 0; i < SET_SIZE_MAX; i++)
 	{
 		//if element is in both sets
 		if (_rSetA.ContainsElement(i) && _rSetB.ContainsElement(i))
 		{
-			resultSet.AddElement(i); //add to our result set
+			_rResultant.AddElement(i); //add to our result set
 		}
 	}
-	return resultSet;
+	return _rResultant;
 }
 // \brief Combines all unique elements from both Set A and Set B
 // \param _rSetA - A reference to the first input set
 // \param _rSetB - A reference to the second input set
 // \return A new TSet containing the combined elements
-TSet Union(TSet& _rSetA, TSet& _rSetB)
+TSet& Union(TSet& _rSetA, TSet& _rSetB, TSet& _rResultant)
 {
-	TSet resultSet; //empty set for combined elements
+	_rResultant.SetClear(); //empty set for combined elements
 	for (int i = 0; i <= SET_SIZE_MAX; i++)
 	{
 		//if element is present in set A or B
-		if (_rSetA.ContainsElement(i)||_rSetB.ContainsElement(i)) 
+		if (_rSetA.ContainsElement(i) || _rSetB.ContainsElement(i))
 		{
 			//Add it to result set
-			resultSet.AddElement(i);
+			_rResultant.AddElement(i);
 		}
 	}
-	return resultSet;
+	return _rResultant;
 }
 // \brief Finds all elements that exist in Set A but do not exist in Set B
 // \param _rSetA - A reference to the base set (A)
 // \param _rSetB - A reference to the set being subtracted (B)
 // \return A new TSet containing the difference
-TSet Difference(TSet& _rSetA, TSet& _rSetB)
+TSet& SetDifference(TSet& _rSetA, TSet& _rSetB, TSet& _rResultant)
 {
-	TSet resultSet; //creates an empty set to store elements of set A
+	_rResultant.SetClear(); //creates an empty set to store elements of set A
 	//loop through set range 1 to 100
 	for (int i = 1; i <= SET_SIZE_MAX; i++)
 	{
@@ -192,18 +192,18 @@ TSet Difference(TSet& _rSetA, TSet& _rSetB)
 		if (_rSetA.ContainsElement(i) && !_rSetB.ContainsElement(i))
 		{
 			//add it to result set
-			resultSet.AddElement(i);
+			_rResultant.AddElement(i);
 		}
 	}
-	return resultSet;
+	return _rResultant;
 }
 // \brief Finds all elements in the universal set that do not exist in Set X
 // \param _rSetX - A reference to the input set
 // \return A new TSet containing the complement
-TSet Complement(TSet& _rSetX)
+TSet& Compliment(TSet& _rSetX, TSet& _rResultant)
 {
 	//Create an empty set to store remaining elemnts
-	TSet resultSet;
+	_rResultant.SetClear();
 
 	//loop through set range
 	for (int i = 0; i <= SET_SIZE_MAX; i++)
@@ -212,8 +212,8 @@ TSet Complement(TSet& _rSetX)
 		if (!_rSetX.ContainsElement(i))
 		{
 			//add it to our result set
-			resultSet.AddElement(i);
+			_rResultant.AddElement(i);
 		}
 	}
-	return resultSet;
+	return _rResultant;
 }
