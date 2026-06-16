@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="DiscreteMathLibrary/DiscreteMathLibrary.vcxproj" />
+  <Project Path="DiscreteMathLibrary/DiscreteMathLibrary.vcxproj" Id="b12c85ea-dde5-4ccb-8f4e-a3cb69797026" />
 </Solution>

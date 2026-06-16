@@ -47,3 +47,18 @@ float Floor(const float _kfX)
 	//positive and whole numbers dont need changing
 	return (float)iTruncated;
 }
+
+// \brief Rounds a number up to the nearest whole integer.
+// \param _kfX - The input float to round up.
+// \return The rounded up whole number.
+float Ceiling(const float _kfX)
+{
+	int iTruncated = (int)_kfX;
+	//if positive and had a remainder
+	if (_kfX > 0.0f && _kfX != (float)iTruncated)
+	{
+		return (float)(iTruncated + 1); //add one to account for positive rounding
+	}
+	//megative numbers and whole numbers dont need changing
+	return (float)iTruncated;
+}
