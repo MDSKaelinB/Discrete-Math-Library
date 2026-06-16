@@ -94,10 +94,10 @@ unsigned long long Combination(const unsigned int _kuin, const unsigned int _kui
 	//divide them to get final answer
 	return ullNumerator / ullDenomintor;
 }
-// \brief Calculates the number of unique permutations (order matters).
-// \param _kuin - The total number of items in the set (n).
-// \param _kuir - the number of items to arrange (r).
-// \return The total number of unique permutations.
+// \brief Calculates the number of unique permutations (order matters)
+// \param _kuin - The total number of items in the set (n)
+// \param _kuir - The number of items to arrange (r)
+// \return The total number of unique permutations
 unsigned long long Permutation(const unsigned int  _kuin, const unsigned int _kuir)
 {
 	//if trying to arrange more items than exist, its not mathematically possible
@@ -111,4 +111,22 @@ unsigned long long Permutation(const unsigned int  _kuin, const unsigned int _ku
 	unsigned long long ullDenominator = Factorial(_kuin - _kuir);
 	//divide them to get final answer
 	return ullNumerator / ullDenominator;
+}
+
+// \brief Counts the total number of unique elements inside a set
+// \param _rSet - Refrence to the set being checked
+// \return The total number of elements found
+int Cardinality(TSet& _rSet)
+{
+	int iCount = 0;
+	//loop through evert possible valid element in our set of 1 to 100
+	for (int i = 0; i < SET_SIZE_MAX; i++)
+	{
+		//if set sontains current number then increase our counter by 1
+		if (_rSet.ContainsElement(i))
+		{
+			iCount++;
+		}
+	}
+	return iCount;
 }
