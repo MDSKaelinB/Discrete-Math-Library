@@ -168,6 +168,37 @@ bool Equals(TSet& _rA, TSet& _rB)
 	}
 	return true; //sets are identical
 }
+// \brief Checks if Set A is a subset of B
+// \param _rA - A reference to the potential subset
+// \param _rB - reference to the main container set
+// \return True if A is a subset of B false otherwise
+bool Subset(TSet& _rA, TSet& _rB)
+{
+	//loop through set range
+	for (int i = 1; i <= SET_SIZE_MAX; i++)
+	{
+		//if element is in a and not in b it is not a subset of b
+		if (_rA.ContainsElement(i) != _rB.ContainsElement(i))
+		{
+			return false;
+		}
+	}
+	return true; //everything in a is in b too
+}
+
+bool SuperSet(TSet& _rA, TSet& _rB)
+{
+	//loop through set range
+	for (int i = 1; i <= SET_SIZE_MAX; i++)
+	{
+		//if element is in b but not a then a isnt a superset
+		if (_rB.ContainsElement(i) && !_rA.ContainsElement(i))
+		{
+			return false;
+		}
+	}
+	return true; //a has everything that b has
+}
 // \brief Finds all elements that exist in both Set A and Set B
 // \param _rSetA - A referenec to the fisrt input set
 // \param _rSetB - A reference to the second input set
