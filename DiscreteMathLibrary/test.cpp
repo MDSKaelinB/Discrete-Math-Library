@@ -36,7 +36,17 @@ void test::TestBasicMath()
 }
 void test::TestCountingAndProbability()
 {
+	//factorial
+	AssertTest("Factorial base case", Factorial(4) == 24ULL);
+	AssertTest("Factorial zero edge case", Factorial(0) == 1ULL);
 
+	//permutation
+	AssertTest("Permutation valid calculation", Permutation(5, 2) == 20ULL);
+	AssertTest("Permutation out of bounds error", Permutation(2, 5) == 0ULL);
+
+	//combination
+	AssertTest("Combination valid calculation", Combination(5, 2) == 10ULL);
+	AssertTest("Combination out of bounds error", Combination(2, 5) == 0ULL);
 }
 void test::TestSetRelationships()
 {
