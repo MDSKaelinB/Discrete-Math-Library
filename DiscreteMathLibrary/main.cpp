@@ -14,6 +14,7 @@ Description :	The main file for the project
 int main()
 {
 	test runTests; //test running object
+	std::cout << "Discrete Maths Tests:\n";
 	runTests.RunAllTests(); //run all the tests
 	return 0;
 }
