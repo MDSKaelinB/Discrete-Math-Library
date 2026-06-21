@@ -49,7 +49,7 @@ float Floor(const float _kfX)
 // \return The rounded up whole number
 float Ceiling(const float _kfX)
 {
-	int iTruncated = (int)_kfX;
+	int iTruncated = (int)_kfX; //remove the decimal
 	if (_kfX > 0.0f && _kfX != (float)iTruncated) //if positive and had a remainder
 	{
 		return (float)(iTruncated + 1); //add one to account for positive rounding
@@ -64,9 +64,9 @@ float Ceiling(const float _kfX)
 unsigned long long Factorial(const unsigned int _kdn)
 {
 	unsigned long long ullResult = 1; //set result tracker to 1
-	for (unsigned int uiCount = 1; uiCount <= _kdn; uiCount++)
+	for (unsigned int uiCount = 1; uiCount <= _kdn; uiCount++) //loop from 1 to target number
 	{
-		ullResult *= uiCount;
+		ullResult *= uiCount; //multiply result by current count value
 	}
 	return ullResult;
 }
@@ -80,7 +80,7 @@ unsigned long long Combination(const unsigned int _kuin, const unsigned int _kui
 	//if trying to choose more items than exist, cant be mathematically possible
 	if (_kuir > _kuin) 
 	{
-		return 0;
+		return 0; //mathematically impossible
 	}
 	//calculate n
 	unsigned long long ullNumerator = Factorial(_kuin);
@@ -114,10 +114,10 @@ unsigned long long Permutation(const unsigned int  _kuin, const unsigned int _ku
 int Cardinality(TSet& _rSet)
 {
 	int iCount = 0;
-	//loop through evert possible valid element in our set of 1 to 100
+	//loop through every possible valid element in our set of 1 to 100
 	for (int i = 0; i < SET_SIZE_MAX; i++)
 	{
-		//if set sontains current number then increase our counter by 1
+		//if set contains current number then increase our counter by 1
 		if (_rSet.ContainsElement(i))
 		{
 			iCount++;
@@ -130,14 +130,11 @@ int Cardinality(TSet& _rSet)
 // \return The total count of subsets (2 to the power of cardinality)
 unsigned long long Power(TSet& _rSet)
 {
-	//Get the total number of elements in the set
-	int iElementsCount = Cardinality(_rSet);
+	int iElementsCount = Cardinality(_rSet); //get the total number of elements in the set
 	//Calculate 2^n using bitwise left shift
 	unsigned long long ullSubsetsCount = 1ULL << iElementsCount; //1ULL is 1 Unsigned Long Long
-
-	return ullSubsetsCount;
+	return ullSubsetsCount; //return the result
 }
-
 // \brief Calculates the total number of ordered pairs in the Cartesian product of two sets
 // \param _rA - A reference to the first input set
 // \param _rB - A reference to the second input set
@@ -147,17 +144,15 @@ unsigned long long CartesianProduct(TSet& _rA, TSet& _rB)
 	//multiply number of elements in Set A by the number of elements in Set B
 	return (unsigned long long) Cardinality(_rA) * Cardinality(_rB);
 }
-
 // \brief Checks if two sets contain the exact same elements
 // \param _rA - Reference to the first input set
 // \param _rB - A reference to the second input set
 // \return True if the sets are identical otherwise false
 bool Equals(TSet& _rA, TSet& _rB)
 {
-	//loop through set range
-	for (int i = 1; i <= SET_SIZE_MAX; i++)
+	for (int i = 1; i <= SET_SIZE_MAX; i++) //loop through set range
 	{
-		//if one set has an elemnt and the other doesnt they arent equal
+		//if one set has an element and the other doesnt they arent equal
 		if (_rA.ContainsElement(i) != _rB.ContainsElement(i))
 		{
 			return false;
@@ -208,8 +203,7 @@ bool Superset(TSet& _rA, TSet& _rB)
 // \return True if the sets have no overlap (disjoint), otherwise false
 bool Disjoint(TSet& _rA, TSet& _rB)
 {
-	//loop through set range
-	for (int i = 1; i <= SET_SIZE_MAX; i++)
+	for (int i = 1; i <= SET_SIZE_MAX; i++) //loop through set range
 	{
 		//if element is in both sets there is an overlap therefore disjoint
 		if (_rA.ContainsElement(i) && _rB.ContainsElement(i))
@@ -227,13 +221,12 @@ bool Disjoint(TSet& _rA, TSet& _rB)
 TSet& Intersection(TSet& _rSetA, TSet& _rSetB, TSet& _rResultant)
 {
 	_rResultant.SetClear(); //creates an empty set to store the matches
-	//loop through universal set range
-	for (int i = 0; i < SET_SIZE_MAX; i++)
+	for (int i = 0; i < SET_SIZE_MAX; i++) //loop through set range
 	{
 		//if element is in both sets
 		if (_rSetA.ContainsElement(i) && _rSetB.ContainsElement(i))
 		{
-			_rResultant.AddElement(i); //add to our result set
+			_rResultant.AddElement(i); //add it to the result set
 		}
 	}
 	return _rResultant;
@@ -247,11 +240,10 @@ TSet& Union(TSet& _rSetA, TSet& _rSetB, TSet& _rResultant)
 	_rResultant.SetClear(); //empty set for combined elements
 	for (int i = 0; i <= SET_SIZE_MAX; i++)
 	{
-		//if element is present in set A or B
+		//if element is in set A or B
 		if (_rSetA.ContainsElement(i) || _rSetB.ContainsElement(i))
 		{
-			//Add it to result set
-			_rResultant.AddElement(i);
+			_rResultant.AddElement(i); //Add it to result set
 		}
 	}
 	return _rResultant;
@@ -269,8 +261,7 @@ TSet& SetDifference(TSet& _rSetA, TSet& _rSetB, TSet& _rResultant)
 		//if element is in Set A and not in set B
 		if (_rSetA.ContainsElement(i) && !_rSetB.ContainsElement(i))
 		{
-			//add it to result set
-			_rResultant.AddElement(i);
+			_rResultant.AddElement(i); //add it to result set
 		}
 	}
 	return _rResultant;
@@ -286,10 +277,10 @@ TSet& SymmetricDifference(TSet& _rA, TSet& _rB, TSet& _rResultant)
 	//loop through set range 1 to 100
 	for (int i = 1; i <= SET_SIZE_MAX; i++)
 	{
-		//if element is is A XOR B
+		//if element is in A XOR B
 		if (_rA.ContainsElement(i) != _rB.ContainsElement(i))
 		{
-			_rResultant.AddElement(i);
+			_rResultant.AddElement(i); //add element as its only in one of the sets
 		}
 	}
 	return _rResultant;
@@ -299,17 +290,14 @@ TSet& SymmetricDifference(TSet& _rA, TSet& _rB, TSet& _rResultant)
 // \return A new TSet containing the complement
 TSet& Compliment(TSet& _rSetX, TSet& _rResultant)
 {
-	//Create an empty set to store remaining elemnts
+	//create an empty set to store remaining elements
 	_rResultant.SetClear();
-
 	//loop through set range
 	for (int i = 0; i <= SET_SIZE_MAX; i++)
 	{
-		//if element isnt in set x
-		if (!_rSetX.ContainsElement(i))
+		if (!_rSetX.ContainsElement(i))	//if element isnt in set x
 		{
-			//add it to our result set
-			_rResultant.AddElement(i);
+			_rResultant.AddElement(i); 	//add it to result set
 		}
 	}
 	return _rResultant;
