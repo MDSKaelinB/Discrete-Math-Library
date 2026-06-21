@@ -13,7 +13,7 @@ Description :	The main file for the project
 
 int main()
 {
-	test testSuite;
-	testSuite.RunAllTests();
+	test runTests; //test running object
+	runTests.RunAllTests(); //run all the tests
 	return 0;
 }
