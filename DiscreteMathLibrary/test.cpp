@@ -1,9 +1,10 @@
 #include "test.h"
+
 //constructor
 test::test()
 {
-	m_uiTestsRun = 0;
-	m_uiTestsPassed = 0;
+	m_uiTestsRun = 0; //set total tests counter to 0
+	m_uiTestsPassed = 0; //set passed tests counter to 0
 }
 //destructor
 test::~test()
@@ -38,15 +39,15 @@ void test::RunAllTests()
 	std::cout << "------------------------\n";
 	std::cout << "	Summary\n";
 	std::cout << "------------------------\n";
-	std::cout << "Tests Executed:" << m_uiTestsPassed << "\n";
-	std::cout << "Total Tests Passed: " << m_uiTestsPassed << "\n";
-	std::cout<<"Score: " << m_uiTestsPassed << " / " << m_uiTestsRun << "\n";
+	std::cout << "Tests Executed:" << m_uiTestsRun<< "\n"; //number of tests
+	std::cout << "Total Tests Passed: " << m_uiTestsPassed << "\n"; //number of tests that passed
+	std::cout<<"Score: " << m_uiTestsPassed << " / " << m_uiTestsRun << "\n"; //shows the score of how many tests passed
 	//show whether everything passed or not
-	if (m_uiTestsRun == m_uiTestsPassed)
+	if (m_uiTestsRun == m_uiTestsPassed) //if everthing passed
 	{
 		std::cout << "All tests passed successfully!!\n";
 	}
-	else
+	else //if at least one test failed
 	{
 		//checks how many tests failed for correct grammar
 		if ((m_uiTestsRun - m_uiTestsPassed) == 1)
@@ -94,15 +95,18 @@ void test::TestSetRelationships()
 {
 	//Set A
 	TSet setA;
+	//adds elements to set a
 	setA.AddElement(10);
 	setA.AddElement(20);
 	setA.AddElement(30);
 	//Set B
 	TSet setB;
+	//adds elements to set b
 	setB.AddElement(10);
 	setB.AddElement(20);
 	//Test C
 	TSet setC;
+	//adds elements to set c
 	setC.AddElement(40);
 	setC.AddElement(50);
 
@@ -126,12 +130,14 @@ void test::TestSetOperations()
 {
 	//set A
 	TSet setA;
+	//setup set a
 	setA.AddElement(10);
 	setA.AddElement(20);
 	setA.AddElement(30);
 
 	//Set B
 	TSet setB;
+	//setup set b
 	setB.AddElement(20);
 	setB.AddElement(30);
 	setB.AddElement(40);
@@ -144,7 +150,7 @@ void test::TestSetOperations()
 	AssertTest("Union: A U B", Equals(result, unionTarget) == true);
 
 	//intersection
-	result.SetClear(); // Clear it out before the next test
+	result.SetClear(); //clear it before next test
 	TSet intersectTarget;
 	intersectTarget.AddElement(20); intersectTarget.AddElement(30);
 	Intersection(setA, setB, result);
@@ -168,7 +174,7 @@ void test::TestSetOperations()
 	result.SetClear();
 	TSet compTarget;
 	compTarget.SetUniversal();
-	compTarget.RemoveElement(10); compTarget.RemoveElement(20); compTarget.RemoveElement(30); // Target is everything EXCEPT 10, 20, 30
+	compTarget.RemoveElement(10); compTarget.RemoveElement(20); compTarget.RemoveElement(30);
 	Compliment(setA, result);
 	AssertTest("Compliment: A'", Equals(result, compTarget) == true);
 }
