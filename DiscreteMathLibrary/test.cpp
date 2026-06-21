@@ -63,18 +63,18 @@ void test::RunAllTests()
 void test::TestBasicMath()
 {
 	//magnitude
-	AssertTest("|-5.0|", Magnitude(-5.0f) == 5.0f);
-	AssertTest("|10.0|", Magnitude(10.0f) == 10.0f);	
+	AssertTest("Magnitude: |-5.0|", Magnitude(-5.0f) == 5.0f);
+	AssertTest("Magnitude: |10.0|", Magnitude(10.0f) == 10.0f);
 	//signum
-	AssertTest("sgn(-10.0)", Signum(-10.0f) == -1.0f);
-	AssertTest("sgn(10.0)", Signum(10.0f) == 1.0f);
-	AssertTest("sgn(0.0)", Signum(0.0f) == 0.0f);
+	AssertTest("Signum: sgn(-10.0)", Signum(-10.0f) == -1.0f);
+	AssertTest("Signum: sgn(10.0)", Signum(10.0f) == 1.0f);
+	AssertTest("Signum: sgn(0.0)", Signum(0.0f) == 0.0f);
 	//floor
-	AssertTest("Floor (positive float)", Floor(5.9f) == 5.0f);
-	AssertTest("Floor (negative float)", Floor(-3.2f) == -4.0f);
+	AssertTest("Floor: positive float", Floor(5.9f) == 5.0f);
+	AssertTest("Floor: negative float", Floor(-3.2f) == -4.0f);
 	//ceiling
-	AssertTest("Ceiling (positive float)", Ceiling(1.1f) == 2.0f);
-	AssertTest("Ceiling (negative float)", Ceiling(-5.5f) == -5.0f);
+	AssertTest("Ceiling: positive float", Ceiling(1.1f) == 2.0f);
+	AssertTest("Ceiling: negative float", Ceiling(-5.5f) == -5.0f);
 }
 void test::TestCountingAndProbability()
 {
