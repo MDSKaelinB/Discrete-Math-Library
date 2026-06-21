@@ -26,7 +26,7 @@ float Signum(const float _kfX)
 	{
 		return 1.0f;
 	}
-	//number must be 0
+	//else number must be 0
 	return 0.0f;
 }
 
@@ -35,16 +35,12 @@ float Signum(const float _kfX)
 // \return The rounded down whole number
 float Floor(const float _kfX)
 {
-	//remove the decimal
-	int iTruncated = (int)_kfX;
-
-	//if its negative and had a decimal part
-	if (_kfX < 0.0f && _kfX !=(float)iTruncated)
+	int iTruncated = (int)_kfX; //remove the decimal
+	if (_kfX < 0.0f && _kfX !=(float)iTruncated) //if its negative and had a decimal part
 	{
-		//minus 1 to account for negative rounding
-		return(float)(iTruncated - 1);
+		return(float)(iTruncated - 1); //minus 1 to account for negative rounding
 	}
-	//positive and whole numbers dont need changing
+	//else keep it the same if its a positive or whole number
 	return (float)iTruncated;
 }
 
@@ -54,12 +50,11 @@ float Floor(const float _kfX)
 float Ceiling(const float _kfX)
 {
 	int iTruncated = (int)_kfX;
-	//if positive and had a remainder
-	if (_kfX > 0.0f && _kfX != (float)iTruncated)
+	if (_kfX > 0.0f && _kfX != (float)iTruncated) //if positive and had a remainder
 	{
 		return (float)(iTruncated + 1); //add one to account for positive rounding
 	}
-	//megative numbers and whole numbers dont need changing
+	//else keep it same if its a negative or whole number
 	return (float)iTruncated;
 }
 
