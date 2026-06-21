@@ -16,5 +16,7 @@ int main()
 	test runTests; //test running object
 	std::cout << "Discrete Maths Tests:\n";
 	runTests.RunAllTests(); //run all the tests
+	std::cout << "\nPress Enter to exit...";
+	std::cin.get();
 	return 0;
 }
