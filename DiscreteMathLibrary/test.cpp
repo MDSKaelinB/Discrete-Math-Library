@@ -10,6 +10,23 @@ test::~test()
 {
 
 }
+//prints the test name checks if condition is true and updates the tracking counters
+void test::AssertTest(const std::string& _kstrTestName, bool _bCondition)
+{
+	m_uiTestsRun++; //increase total number of tests
+	std::cout << "  " << _kstrTestName << ": ";
+	if (_bCondition) //if expected value
+	{
+		//test passed
+		m_uiTestsPassed++; //increase succesful tests counter
+		std::cout << "PASS\n";
+	}
+	else
+	{
+		//test failed
+		std::cout << "FAIL\n";
+	}
+}
 void test::RunAllTests()
 {
 	TestBasicMath();
@@ -22,7 +39,7 @@ void test::TestBasicMath()
 {
 	//magnitude
 	AssertTest("|-5.0|", Magnitude(-5.0f) == 5.0f);
-	AssertTest("|5.0|", Magnitude(10.0f) == 10.0f);
+	AssertTest("|10.0|", Magnitude(10.0f) == 10.0f);	
 	//signum
 	AssertTest("sgn(-10.0)", Signum(-10.0f) == -1.0f);
 	AssertTest("sgn(10.0)", Signum(10.0f) == 1.0f);
