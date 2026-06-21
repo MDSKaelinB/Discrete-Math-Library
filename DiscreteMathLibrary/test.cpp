@@ -48,9 +48,83 @@ void test::TestCountingAndProbability()
 }
 void test::TestSetRelationships()
 {
+	//Set A
+	TSet setA;
+	setA.AddElement(10);
+	setA.AddElement(20);
+	setA.AddElement(30);
+	//Set B
+	TSet setB;
+	setB.AddElement(10);
+	setB.AddElement(20);
+	//Test C
+	TSet setC;
+	setC.AddElement(40);
+	setC.AddElement(50);
 
+	//cardinality
+	AssertTest("|A|", Cardinality(setA) == 3);
+	//power
+	AssertTest("P(A) Size", Power(setA) == 8ULL);
+	//cartesian product
+	AssertTest("A x B Size", CartesianProduct(setA, setB) == 6ULL);
+	//subset
+	AssertTest("B sub A", Subset(setB, setA) == true);
+	AssertTest("C sub A", Subset(setC, setA) == false);
+	//superset
+	AssertTest("A super B", Superset(setA, setB) == true);
+	//equals
+	AssertTest("A == B", Equals(setA, setB) == false);
+	//disjoint
+	AssertTest("A || C", Disjoint(setA, setC) == true);
 }
 void test::TestSetOperations()
 {
+	//set A
+	TSet setA;
+	setA.AddElement(10);
+	setA.AddElement(20);
+	setA.AddElement(30);
 
+	//Set B
+	TSet setB;
+	setB.AddElement(20);
+	setB.AddElement(30);
+	setB.AddElement(40);
+	TSet result; //stores function results
+
+	//union
+	TSet unionTarget;
+	unionTarget.AddElement(10); unionTarget.AddElement(20); unionTarget.AddElement(30); unionTarget.AddElement(40);
+	Union(setA, setB, result);
+	AssertTest("A U B", Equals(result, unionTarget) == true);
+
+	//intersection
+	result.SetClear(); // Clear it out before the next test
+	TSet intersectTarget;
+	intersectTarget.AddElement(20); intersectTarget.AddElement(30);
+	Intersection(setA, setB, result);
+	AssertTest("A n B", Equals(result, intersectTarget) == true);
+
+	//set difference
+	result.SetClear();
+	TSet diffTarget;
+	diffTarget.AddElement(10);
+	SetDifference(setA, setB, result);
+	AssertTest("A \\ B", Equals(result, diffTarget) == true);
+
+	//symmetric difference
+	result.SetClear();
+	TSet symDiffTarget;
+	symDiffTarget.AddElement(10); symDiffTarget.AddElement(40);
+	SymmetricDifference(setA, setB, result);
+	AssertTest("A symDiff B", Equals(result, symDiffTarget) == true);
+
+	//compliment8
+	result.SetClear();
+	TSet compTarget;
+	compTarget.SetUniversal();
+	compTarget.RemoveElement(10); compTarget.RemoveElement(20); compTarget.RemoveElement(30); // Target is everything EXCEPT 10, 20, 30
+	Compliment(setA, result);
+	AssertTest("A'", Equals(result, compTarget) == true);
 }
