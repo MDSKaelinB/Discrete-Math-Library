@@ -14,7 +14,7 @@ test::~test()
 void test::AssertTest(const std::string& _kstrTestName, bool _bCondition)
 {
 	m_uiTestsRun++; //increase total number of tests
-	std::cout << "  " << _kstrTestName << ": ";
+	std::cout << _kstrTestName << ": ";
 	if (_bCondition) //if expected value
 	{
 		//test passed
@@ -35,10 +35,12 @@ void test::RunAllTests()
 	TestSetRelationships();
 	TestSetOperations();
 	//show summary of tests
-	std::cout << "Summary\n";
+	std::cout << "------------------------\n";
+	std::cout << "	Summary\n";
+	std::cout << "------------------------\n";
 	std::cout << "Tests Executed:" << m_uiTestsPassed << "\n";
 	std::cout << "Total Tests Passed: " << m_uiTestsPassed << "\n";
-	std::cout << m_uiTestsPassed << " / " << m_uiTestsRun << "\n";
+	std::cout<<"Score: " << m_uiTestsPassed << " / " << m_uiTestsRun << "\n";
 	//show whether everything passed or not
 	if (m_uiTestsRun == m_uiTestsPassed)
 	{

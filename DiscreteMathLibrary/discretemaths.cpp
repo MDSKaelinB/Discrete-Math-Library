@@ -181,7 +181,7 @@ bool Subset(TSet& _rA, TSet& _rB)
 	for (int i = 1; i <= SET_SIZE_MAX; i++)
 	{
 		//if element is in a and not in b it is not a subset of b
-		if (_rA.ContainsElement(i) != _rB.ContainsElement(i))
+		if (_rA.ContainsElement(i) && ! _rB.ContainsElement(i))
 		{
 			return false;
 		}
