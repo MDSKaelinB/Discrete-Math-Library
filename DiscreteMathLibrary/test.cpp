@@ -29,10 +29,35 @@ void test::AssertTest(const std::string& _kstrTestName, bool _bCondition)
 }
 void test::RunAllTests()
 {
+	//test everything
 	TestBasicMath();
 	TestCountingAndProbability();
 	TestSetRelationships();
 	TestSetOperations();
+	//show summary of tests
+	std::cout << "Summary\n";
+	std::cout << "Tests Executed:" << m_uiTestsPassed << "\n";
+	std::cout << "Total Tests Passed: " << m_uiTestsPassed << "\n";
+	std::cout << m_uiTestsPassed << " / " << m_uiTestsRun << "\n";
+	//show whether everything passed or not
+	if (m_uiTestsRun == m_uiTestsPassed)
+	{
+		std::cout << "All tests passed successfully!!\n";
+	}
+	else
+	{
+		//checks how many tests failed for correct grammar
+		if ((m_uiTestsRun - m_uiTestsPassed) == 1)
+		{
+			//1 test failed
+			std::cout << (m_uiTestsRun - m_uiTestsPassed) << " test failed\n";
+		}
+		else
+		{
+			//more than 1 test failed
+			std::cout << (m_uiTestsRun - m_uiTestsPassed) << " tests failed\n";
+		}
+	}
 }
 //specific tests
 void test::TestBasicMath()
